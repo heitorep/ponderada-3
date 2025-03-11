@@ -1,0 +1,37 @@
+
+services:
+  api_gateway:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - auth
+      - fleet
+      - payment
+      - telemetry
+      - monitoring
+
+  auth:
+    build: ./src/auth
+    ports:
+      - "8001:8001"
+
+  fleet:
+    build: ./src/fleet
+    ports:
+      - "8002:8002"
+
+  payment:
+    build: ./src/payment
+    ports:
+      - "8003:8003"
+
+  telemetry:
+    build: ./src/telemetry
+    ports:
+      - "8004:8004"
+
+  monitoring:
+    build: ./src/monitoring
+    ports:
+      - "8005:8005"
